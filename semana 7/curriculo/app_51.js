@@ -1,7 +1,6 @@
 const express = require('express'); 
 const app = express();
-const hostname = '127.0.0.1';
-const port = 3051;
+var port = process.env.PORT || 3051;
 const sqlite3 = require('sqlite3').verbose(); 
 const DBPATH = 'banco.db'; 
 app.use(express.static("."));
@@ -20,6 +19,6 @@ db.get(sql, [], (err, row) => {
     res.json(row);
 });
 });
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server running at http://${port}/`);
 });
